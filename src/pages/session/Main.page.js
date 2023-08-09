@@ -41,7 +41,13 @@ function Main() {
   let reqest = async () => {
     // UpdateDataLectura();
   }
-
+ useEffect(() => {
+    GetListOfMedidoresNespra()
+    reqest()
+    return () => {
+      // reqest()
+    }
+  }, [])
   const GetListOfMedidoresNespra = async () => {
     let mediList = await ListMedidores({empresa:LoginState.planta})
     setMediList(mediList);
@@ -93,13 +99,7 @@ function Main() {
     ObtainDataOfSessionStorage()
   }
   
-  useEffect(() => {
-    GetListOfMedidoresNespra()
-    reqest()
-    return () => {
-      // reqest()
-    }
-  }, [])
+ 
   
   useLayoutEffect(() => {
     ObtainDataOfSessionStorage()
